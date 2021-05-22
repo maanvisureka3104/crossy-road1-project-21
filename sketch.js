@@ -14,11 +14,6 @@ function setup() {
   createCanvas(1366,2700);
   carGroup1 = new Group();
   logGroup1 = new Group();
- }
-
-function draw() {
-  background("skyblue");
- 
  for(var i=0;i<6;i++){
    var bottomGrass1=createSprite(683, height-50-(i*400),width,grassHeight);
    if(i%2===0)
@@ -28,7 +23,6 @@ function draw() {
    }
    bottomGrass1.shapeColor="green";
  }
-
  for(var i=0;i<40;i++){
    cars=new Car(2);
    carGroup1.add(cars.spt);
@@ -37,12 +31,28 @@ function draw() {
   log=new Log(-2);
   logGroup1.add(log.spt);
  }
- for(var i=1;i<logGroup1.legth;i++){
+ 
+ }
+
+function draw() {
+  background("skyblue");
+
+ 
+ for(var i=1;i<logGroup1.length;i++){
    if(logGroup1[i].x<0){
      logGroup1[i].x=width;
    }
+  
 }
-
+for(var i=1;i<carGroup1.length;i++){
+   if(carGroup1[i].x<0){
+     carGroup1[i].x=width;
+   }
+ if(carGroup1[i].x>width){
+     carGroup1[i].x=0;
+   }
+ 
+}
 
   drawSprites();
 }
